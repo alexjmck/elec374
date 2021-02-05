@@ -7,8 +7,6 @@ phase1-2020/output_files/*
 phase1-2020/simulation/*
 
 # generated file extensions
-*.bdf
-
 
 
 # from https://github.com/github/gitignore/blob/master/Global/ModelSim.gitignore
