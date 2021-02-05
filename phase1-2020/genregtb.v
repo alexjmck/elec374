@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps
+
 module genregtb;
 	reg [31:0] input_d;
 	wire clk;
@@ -6,11 +8,11 @@ module genregtb;
 	wire [31:0] output_q;
 	
 	clock clock(clk);
-	gen_reg32 #  uut(clr, clk, reset, input_d, output_q );
+	gen_reg32 uut(input_d, clk, clr, reset, output_q );
 	
 	initial begin
-		$dumpfile("out.vcd");
-		$dumpvars(0, gen_reg_testb);
+		// $dumpfile("out.vcd");
+		// $dumpvars(0, gen_reg_testb);
 		
 		reset = 0;
 		clr = 0;
@@ -31,10 +33,8 @@ module genregtb;
 		#10 
 		
 		reset = 0;
-		#15
-		
-		$finish;
-		
+		#15;
+				
 	end
 		
 endmodule
