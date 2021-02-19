@@ -17,54 +17,54 @@ module Encoder_32_to_5 (
 always @ ( * ) begin
 
   if (R0out == 1'b1)
-    Sout <= 5'b0;
-  else if (R10out == 1'b1)
-    Sout <= 5'b1;
+    Sout <= 5'b00000;
+  else if (R1out == 1'b1)
+    Sout <= 5'b00001;
   else if (R2out == 1'b1)
-    Sout <= 5'b2;
+    Sout <= 5'b00010;
   else if (R3out == 1'b1)
-    Sout <= 5'b3;
+    Sout <= 5'b00011;
   else if (R4out == 1'b1)
-    Sout <= 5'b4;
+    Sout <= 5'b00100;
   else if (R5out == 1'b1)
-    Sout <= 5'b5;
+    Sout <= 5'b00101;
   else if (R6out == 1'b1)
-    Sout <= 5'b6;
+    Sout <= 5'b00110;
   else if (R7out == 1'b1)
-    Sout <= 5'b7;
+    Sout <= 5'b00111;
   else if (R8out == 1'b1)
-    Sout <= 5'b8;
+    Sout <= 5'b01000;
   else if (R9out == 1'b1)
-    Sout <= 5'b9;
+    Sout <= 5'b01001;
   else if (R10out == 1'b1)
-    Sout <= 5'b10;
+    Sout <= 5'b01010;
   else if (R11out == 1'b1)
-    Sout <= 5'b11;
+    Sout <= 5'b01011;
   else if (R12out == 1'b1)
-    Sout <= 5'b12;
+    Sout <= 5'b01100;
   else if (R13out == 1'b1)
-    Sout <= 5'b13;
+    Sout <= 5'b01101;
   else if (R14out == 1'b1)
-    Sout <= 5'b14;
+    Sout <= 5'b01110;
   else if (R15out == 1'b1)
-    Sout <= 5'b15;
+    Sout <= 5'b01111;
 
   else if (HIout == 1'b1)
-    Sout <= 5'b16;
+    Sout <= 5'b10000;
   else if (LOout == 1'b1)
-    Sout <= 5'b17;
+    Sout <= 5'b10001;
   else if (zhighout == 1'b1)
-    Sout <= 5'b18;
+    Sout <= 5'b10010;
   else if (zlowout == 1'b1)
-    Sout <= 5'b19;
+    Sout <= 5'b10011;
   else if (PCout == 1'b1)
-    Sout <= 5'b20;
+    Sout <= 5'b10100;
   else if (MDRout == 1'b1)
-    Sout <= 5'b21;
+    Sout <= 5'b10101;
   else if (InPortout == 1'b1)
-    Sout <= 5'b22;
+    Sout <= 5'b10110;
   else if (Cout == 1'b1)
-    Sout <= 5'b23;
+    Sout <= 5'b10111;
 
 end
 

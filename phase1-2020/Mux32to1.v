@@ -8,7 +8,9 @@ module Mux32to1 (
 
   input reg [4:0] Scode,
 
-  output [31:0] BusMuxOut);
+  output [31:0] BusMuxOut
+
+);
 
 /*
   Always block runs whenever any variable changes.
@@ -18,54 +20,54 @@ module Mux32to1 (
 
 always @ ( * ) begin
 
-if (Scode == 5'0)
+if (Scode == 5'b00000)
   BusMuxOut <= R0MuxIn;
-else if (Scode == 5'1)
+else if (Scode == 5'b00001)
   BusMuxOut <= R1MuxIn;
-else if (Scode == 5'2)
+else if (Scode == 5'b00010)
   BusMuxOut <= R2MuxIn;
-else if (Scode == 5'3)
+else if (Scode == 5'b00011)
   BusMuxOut <= R3MuxIn;
-else if (Scode == 5'4)
+else if (Scode == 5'b00100)
   BusMuxOut <= R4MuxIn;
-else if (Scode == 5'5)
+else if (Scode == 5'b00101)
   BusMuxOut <= R5MuxIn;
-else if (Scode == 5'6)
+else if (Scode == 5'b00110)
   BusMuxOut <= R6MuxIn;
-else if (Scode == 5'7)
+else if (Scode == 5'b00111)
   BusMuxOut <= R7MuxIn;
-else if (Scode == 5'8)
+else if (Scode == 5'b01000)
   BusMuxOut <= R8MuxIn;
-else if (Scode == 5'9)
+else if (Scode == 5'b01001)
   BusMuxOut <= R9MuxIn;
-else if (Scode == 5'10)
+else if (Scode == 5'b01010)
   BusMuxOut <= R10MuxIn;
-else if (Scode == 5'11)
+else if (Scode == 5'b01011)
   BusMuxOut <= R11MuxIn;
-else if (Scode == 5'12)
+else if (Scode == 5'b01100)
   BusMuxOut <= R12MuxIn;
-else if (Scode == 5'13)
+else if (Scode == 5'b01101)
   BusMuxOut <= R13MuxIn;
-else if (Scode == 5'14)
+else if (Scode == 5'b01110)
   BusMuxOut <= R14MuxIn;
-else if (Scode == 5'15)
+else if (Scode == 5'b01111)
   BusMuxOut <= R15MuxIn;
 
-else if (Scode == 5'16)
+else if (Scode == 5'b10000)
   BusMuxOut <= HIMuxIn;
-else if (Scode == 5'17)
+else if (Scode == 5'b10001)
   BusMuxOut <= LOMuxIn;
-else if (Scode == 5'18)
+else if (Scode == 5'b10010)
   BusMuxOut <= zhighMuxIn;
-else if (Scode == 5'19)
+else if (Scode == 5'b10011)
   BusMuxOut <= zlowMuxIn;
-else if (Scode == 5'20)
+else if (Scode == 5'b10100)
   BusMuxOut <= PCMuxIn;
-else if (Scode == 5'21)
+else if (Scode == 5'b10101)
   BusMuxOut <= MDRMuxIn;
-else if (Scode == 5'22)
+else if (Scode == 5'b10110)
   BusMuxOut <= InPortMuxIn;
-else if (Scode == 5'23)
+else if (Scode == 5'b10111)
   BusMuxOut <= CMuxIn;
 
 end
