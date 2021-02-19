@@ -1,53 +1,27 @@
 `timescale 1ns / 1ps
 
-module bus (
+module bus(
 
+  // Encoder inputs and outputs
+  input R0out, R1out, R2out, R3out, R4out, R5out, R6out, R7out, R8out, R9out, R10out, R11out, R12out, R13out, R14out, R15out,
+  input HIout, LOout, zhighout, zlowout, PCout, MDRout, InPortout, Cout,
+  output reg [4:0] Sout);
+
+  // 32 to 1 Mux inputs and outputs
+  input [31:0] R0MuxIn, R1MuxIn, R2MuxIn, R3MuxIn, R4MuxIn, R5MuxIn, R6MuxIn, R7MuxIn, R8MuxIn, R9MuxIn, R10MuxIn, R11MuxIn, R12MuxIn, R13MuxIn, R14MuxIn, R15MuxIn,
+  input [31:0] HIMuxIn, LOMuxIn, zhighMuxIn, zlowMuxIn, PCMuxIn, MDRMuxIn, InPortMuxIn, CMuxin,
+  output [31:0] BusMuxOut);
 
   );
 
-  // Registers
-  gen_reg32 PCreg(?input?, clk, clr, reset, output_Q);
-  gen_reg32 IRreg(?input?, clk, clr, reset, output_Q);
 
-  gen_reg32 R0(?input?, clk, clr, reset, output_Q);
-  gen_reg32 R1(?input?, clk, clr, reset, output_Q);
-  gen_reg32 R2(?input?, clk, clr, reset, output_Q);
-  gen_reg32 R3(?input?, clk, clr, reset, output_Q);
-  gen_reg32 R4(?input?, clk, clr, reset, output_Q);
-  gen_reg32 R5(?input?, clk, clr, reset, output_Q);
-  gen_reg32 R6(?input?, clk, clr, reset, output_Q);
-  gen_reg32 R7(?input?, clk, clr, reset, output_Q);
-  gen_reg32 R8(?input?, clk, clr, reset, output_Q);
-  gen_reg32 R9(?input?, clk, clr, reset, output_Q);
-  gen_reg32 R10(?input?, clk, clr, reset, output_Q);
-  gen_reg32 R11(?input?, clk, clr, reset, output_Q);
-  gen_reg32 R12(?input?, clk, clr, reset, output_Q);
-  gen_reg32 R13(?input?, clk, clr, reset, output_Q);
-  gen_reg32 R14(?input?, clk, clr, reset, output_Q);
-  gen_reg32 R15(?input?, clk, clr, reset, output_Q);
+  // Run Encoder_32_to_5
+  Encoder_32_to_5(R0out, R1out, R2out, R3out, R4out, R5out, R6out, R7out, R8out, R9out, R10out, R11out, R12out, R13out, R14out, R15out,
+  HIout, LOout, zhighout, zlowout, PCout, MDRout, InPortout, Cout, Sout)
 
-  //Input declaration
-
-
-  // Output declaration
-
-
-
-
-  // Port declaration
-
-
-  // Code and behaviour
-
-  always @ (postedge clock)
-
-  begin:
-
-
-
-
-
-  end
+  // Run Mux32to1 with Encoder S output
+  Mux32to1(R0MuxIn, R1MuxIn, R2MuxIn, R3MuxIn, R4MuxIn, R5MuxIn, R6MuxIn, R7MuxIn, R8MuxIn, R9MuxIn, R10MuxIn, R11MuxIn, R12MuxIn, R13MuxIn, R14MuxIn, R15MuxIn,
+    HIMuxIn, LOMuxIn, zhighMuxIn, zlowMuxIn, PCMuxIn, MDRMuxIn, InPortMuxIn, CMuxin, Sout, BusMuxOut);
 
 
 endmodule
