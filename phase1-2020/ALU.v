@@ -55,5 +55,61 @@ always @ ( * ) begin
     NOT(A, B, zlowout);
 
 end
+  
+  //
+  
+  `timescale 1ns / 1ps
+
+ module ALU(
+   input [11:0] aluControl, 
+   input [31:0] A, B,
+   output [31:0] zlow, zhigh);
+  
+  wire [31:0] zlowAND, zhighAND, zlowOR, zhighOR, zlowNEG, zhighNEG, zlowNOT, zhighNOT, zlowADD, zhighADD, zlowSUB, zhighSUB;
+  wire [31:0] zlowMUL, zhighMUL, zlowDIV, zhighDIV, zlowSHR, zhighSHR, zlowSHL, zhighSHL, zlowROR, zhighROR, zlowROL, zhighROL;
+  reg [31:0] zlowTemp, zhighTemp;
+  wire cin;
+        /*
+    aluControl signal meaning
+    complete operation when bit number is 1
+    ADD - 0
+    SUB - 1
+    MUL - 2
+    DIV - 3
+    SHR - 4
+    SHL - 5
+    ROR - 6
+    ROL - 7
+    AND - 8
+    OR  - 9
+    NEG - 10
+    NOT - 11
+    */
+   adder32 ADD(A,B,cin,zlowADD,zhighADD);
+   sub32 SUB(A,B,cin,zlowSUB,zhighSUB);
+   
+   	always @ * begin
+      if(aluControl == 12'b0000_0000_0001) begin
+			zlowTemp <= zlowADD;
+			zhighTemp <= zhighADD;
+      end else if(aluControl == 12'b0000_0000_0010) begin
+			zlowTemp <= zlowSUB;
+			zhighTemp <= zhighSUB;
+      end else if(aluControl == 12'b0001_0000_0000) begin
+			zlowTemp <= A & B;
+        	zhighTemp <= 0;
+		end
+	end
+	
+	assign zlow = zlowTemp;
+	assign zhigh = zhighTemp;
+	
+   always @(*) begin
+     $monitor ("low = %h", zlow);
+     $monitor ("high = %h", zhigh);
+   end
+   
+endmodule
+	
 
 endmodule
