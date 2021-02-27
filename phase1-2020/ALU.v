@@ -80,8 +80,8 @@
      ShiftLeft SHL(A,B,zlowSHL);
      ror32 ROR(A,B,zlowROR);
      rol32 ROL(A,B,zlowROL);
-     neg32 NEG(A,zlowNEG);
-     not32 NOT(A,zlowNOT);
+     neg32 NEG(B,zlowNEG);
+     not32 NOT(B,zlowNOT);
 
 
      	always @ * begin
