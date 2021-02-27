@@ -17,18 +17,18 @@ module booth_mult (
   reg [63:0] prod;
   
   initial begin
-  		cb = 0;
-        prod = 0;
-        ZhighOut = 0;
-        ZlowOut = 0;
+  		cb <= 0;
+        prod <= 0;
+        ZhighOut <= 0;
+        ZlowOut <= 0;
   end
-  
-
+ 
 
   wire [33:0] mult_pos_1 = {mult[31], mult[31], mult};
-  wire [33:0] mult_neg_1 = -mult_pos_1;
+  wire [33:0] mult_neg_1 = -mult_pos_1;;
   wire [33:0] mult_pos_2 = { mult[31], mult, 1'b0 };
   wire [33:0] mult_neg_2 = -mult_pos_2;
+
 
   always @(*) begin
 
@@ -36,7 +36,6 @@ module booth_mult (
       for (i = 0; i < 16; i = i + 1) begin
           if (i==0)
               prod = {32'd0, multr};
-
 
           P1 = {prod[63], prod[63], prod[63:32]};
 
@@ -59,12 +58,8 @@ module booth_mult (
           prod = {P2, prod[31:2]};
 
       end
-      ZhighOut = prod[31:0]; 
-      ZlowOut = prod[63:32]; 
+      ZlowOut = prod[31:0]; 
+      ZhighOut = prod[63:32]; 
 
   end
-
-
-
-
 endmodule
