@@ -82,6 +82,7 @@
      rol32 ROL(A,B,zlowROL);
      neg32 NEG(B,zlowNEG);
      not32 NOT(B,zlowNOT);
+     booth_mult MUL(A,B,zlowMUL,zhighMUL);
 
 
      	always @ * begin
@@ -91,9 +92,9 @@
         end else if(ALUControl == 12'b0000_0000_0010) begin
     			zlowTemp <= zlowSUB;
     			zhighTemp <= zhighSUB;
-        /*
-          Add MUL Here
-        */
+        end else if(ALUControl == 12'b0000_0000_0100) begin
+          zlowTemp <= zlowMUL;
+          zhighTemp <= zhighMUL;
   		  end else if(ALUControl == 12'b0000_0000_1000) begin
           zlowTemp <= zlowDIV;
           zhighTemp <= zhighDIV;
